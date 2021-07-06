@@ -1,0 +1,9 @@
+// 2021-07-06 15:23:45
+///scr_setRoomEX(json)
+// This will set the room environment variables
+
+var _map = argument0;
+
+obj_main.EX_room_width = _map[?"room"][?"width"];
+obj_main.EX_room_height = _map[?"room"][?"height"];
+obj_main.EX_room_speed = _map[?"room"][?"speed"];

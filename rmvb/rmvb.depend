@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1625600528 source:e:\code__blocks\projects\rmvb\main.cpp
+	<stdio.h>
+	<string>
+	<windows.h>
+	<direct.h>
+

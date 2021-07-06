@@ -1,0 +1,9 @@
+// 2021-07-06 17:12:19
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_btn_import;
+uses_physics = false;
+
+
+#event mouse_left_press
+room_goto(rm_editor)

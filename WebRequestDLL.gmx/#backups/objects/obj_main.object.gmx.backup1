@@ -1,0 +1,54 @@
+// 2021-07-06 17:01:54
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+external_define("DLL_startexe.dll","startConvert",dll_cdecl, ty_real, 1, ty_real)
+
+//external_call("startConvert",1)
+
+external_free("DLL_startexe.dll")
+
+#section Room info
+
+EX_room_width = 0;
+EX_room_height = 0;
+EX_room_speed = 0;
+
+alarm[0] = 1
+
+#event alarm0 Load level JSON
+
+var i, file;
+rawstr = "";
+file = file_text_open_read("tempjson.txt");
+
+while(!file_text_eof(file))
+{
+    rawstr += file_text_read_string(file);
+    file_text_readln(file)
+}
+
+file_text_close(file);
+
+// decode string as json
+var rmap = json_decode(rawstr);
+
+// Set level room stats
+scr_setRoomEX(rmap);
+
+placeInstances(rmap);
+
+#event draw Draw room boundaries
+drawRoomBoundaries(EX_room_width,EX_room_height)
+
+#event draw_gui Draw room specs
+
+scr_drawTextOutlined(fnt_roomInfoGui,c_white,1,"room w: "+string(EX_room_width)+
+        ", room h: "+string(EX_room_height)+", room speed: "+string(EX_room_speed),32,32)
+
+#event keypress:vk_escape
+
+scr_freeDependencies();
+game_end()

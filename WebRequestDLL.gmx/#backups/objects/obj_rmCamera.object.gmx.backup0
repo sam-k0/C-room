@@ -1,0 +1,37 @@
+// 2021-07-06 16:37:17
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_cameraIcon;
+uses_physics = false;
+
+#event create
+x = 0;
+y = 0;
+
+zoom = 1;
+
+
+#event step Move view
+// calculate inputs
+var axh = keyboard_check(ord("D"))-keyboard_check(ord("A"));
+var axv = keyboard_check(ord("S"))-keyboard_check(ord("W"));
+var amult = 4*max(1,keyboard_check(vk_shift)*2);
+// Move the view
+view_xview += axh*amult;
+view_yview += axv*amult;
+
+x = view_xview+view_wview/2;
+y = view_yview+view_hview/2;
+
+#event mouse_wheel_up
+zoom *= 2;
+
+view_wview = 1920*zoom;
+view_hview = 1080*zoom;
+
+#event mouse_wheel_down
+zoom /= 2;
+
+view_wview = 1920*zoom;
+view_hview = 1080*zoom;
+

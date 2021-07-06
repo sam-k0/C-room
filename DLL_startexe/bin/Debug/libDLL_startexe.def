@@ -1,0 +1,4 @@
+EXPORTS
+    removeBackslash @1
+    showMessageWindow @2
+    startConvert @3

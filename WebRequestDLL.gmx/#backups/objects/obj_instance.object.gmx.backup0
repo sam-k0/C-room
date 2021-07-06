@@ -1,0 +1,41 @@
+// 2021-07-06 16:59:52
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_instance;
+uses_physics = false;
+
+#event create
+EX_obj_name = "undefined";
+EX_name = "inst_XXXXX";
+EX_locked = 0;
+EX_code = "";
+EX_scaleX = 1;
+EX_scaleY = 1;
+EX_color = 1234567890;
+EX_rotation = 0;
+
+alarm[0] = 5;
+
+hovered = false;
+
+#event alarm0 Update
+image_angle = EX_rotation;
+image_xscale = EX_scaleX;
+image_yscale = EX_scaleY;
+
+#event mouse_left_press Show info
+
+show_message_async("Obj. Name: "+EX_obj_name+"#Name (ID): "+EX_name+"#Rotation: "+string(EX_rotation))
+
+#event mouse_enter
+hovered = true;
+
+#event mouse_leave
+hovered = false;
+
+#event draw
+draw_self()
+if(hovered)
+{
+    scr_drawTextOutlined(fnt_objTooltip,c_white,1,EX_obj_name,x,y)
+}

@@ -1,0 +1,6 @@
+// 2021-07-06 15:56:39
+/// drawRoomBoundaries(w, h)
+#args w, h
+
+draw_set_color(c_white)
+draw_rectangle(0,0,w,h,true)
